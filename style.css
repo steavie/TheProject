@@ -1,0 +1,221 @@
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: radial-gradient(ellipse at center, #0d0d1a 0%, #050508 100%);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: 'VT323', monospace;
+  overflow: hidden;
+  user-select: none;
+}
+
+/* ── Wrapper ─────────────────────────────────────────── */
+#crt-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  filter: drop-shadow(0 30px 60px rgba(0,0,0,0.9));
+}
+
+/* ── Monitor outer frame ─────────────────────────────── */
+#monitor-frame {
+  background: linear-gradient(160deg, #2e2e2e 0%, #1c1c1c 40%, #242424 100%);
+  border-radius: 18px 18px 10px 10px;
+  padding: 22px 28px 14px;
+  border: 1px solid #3a3a3a;
+  box-shadow:
+    inset 0 2px 0 rgba(255,255,255,0.06),
+    inset 0 -2px 0 rgba(0,0,0,0.4),
+    2px 2px 0 #111,
+    5px 5px 0 #0c0c0c;
+  position: relative;
+}
+
+/* ── Screen area ─────────────────────────────────────── */
+#screen-area {
+  position: relative;
+  width: 640px;
+  height: 510px;
+  border-radius: 6px;
+  overflow: hidden;
+  background: #000;
+  border: 3px solid #111;
+  box-shadow:
+    inset 0 0 60px rgba(0,0,0,0.7),
+    0 0 0 1px #0a0a0a,
+    0 0 25px rgba(0, 200, 80, 0.07);
+}
+
+#canvas {
+  display: block;
+  width: 640px;
+  height: 510px;
+  image-rendering: pixelated;
+}
+
+/* CRT Scanlines */
+#scanlines {
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.10) 2px,
+    rgba(0, 0, 0, 0.10) 4px
+  );
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* CRT Vignette */
+#vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse at 50% 50%,
+    transparent 50%,
+    rgba(0, 0, 0, 0.60) 100%
+  );
+  pointer-events: none;
+  z-index: 11;
+  border-radius: 6px;
+}
+
+/* ── Monitor chin ────────────────────────────────────── */
+#monitor-chin {
+  display: flex;
+  align-items: center;
+  padding: 10px 8px 4px;
+  gap: 10px;
+}
+
+#power-led {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #00e84e;
+  box-shadow: 0 0 5px #00e84e, 0 0 10px rgba(0, 232, 78, 0.5);
+  animation: led-pulse 2.4s ease-in-out infinite;
+  flex-shrink: 0;
+}
+
+@keyframes led-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.55; }
+}
+
+#monitor-brand {
+  font-size: 13px;
+  color: #3a3a3a;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  flex: 1;
+  text-align: center;
+}
+
+#monitor-buttons {
+  display: flex;
+  gap: 5px;
+  flex-shrink: 0;
+}
+
+.mon-btn {
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+  background: #2a2a2a;
+  border: 1px solid #1a1a1a;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.04);
+}
+.mon-btn.active {
+  background: #1e3a28;
+  border-color: #2a5a3a;
+}
+
+/* ── Monitor stand ───────────────────────────────────── */
+#monitor-neck {
+  width: 120px;
+  height: 24px;
+  background: linear-gradient(to bottom, #1e1e1e, #181818);
+  clip-path: polygon(20% 0%, 80% 0%, 90% 100%, 10% 100%);
+  border-top: none;
+}
+
+#monitor-base {
+  width: 260px;
+  height: 14px;
+  background: linear-gradient(to bottom, #202020, #161616);
+  border-radius: 0 0 10px 10px;
+  border: 1px solid #2a2a2a;
+  border-top: none;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.6);
+}
+
+/* ── Hint bar below monitor ──────────────────────────── */
+#hint-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 696px;
+  margin-top: 10px;
+  padding: 0 6px;
+}
+
+#hint-text {
+  font-family: 'VT323', monospace;
+  font-size: 17px;
+  color: #3a3a3a;
+  letter-spacing: 1px;
+  transition: color 0.3s;
+}
+
+#mute-btn {
+  background: none;
+  border: 1px solid #2a2a2a;
+  color: #444;
+  font-size: 16px;
+  width: 30px;
+  height: 24px;
+  cursor: pointer;
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.2s, color 0.2s;
+  flex-shrink: 0;
+}
+#mute-btn:hover {
+  border-color: #555;
+  color: #888;
+}
+
+/* ── CRT flicker animation (subtle) ─────────────────── */
+@keyframes crt-flicker {
+  0%   { opacity: 1; }
+  92%  { opacity: 1; }
+  93%  { opacity: 0.97; }
+  94%  { opacity: 1; }
+  98%  { opacity: 1; }
+  99%  { opacity: 0.98; }
+  100% { opacity: 1; }
+}
+
+#screen-area {
+  animation: crt-flicker 8s infinite;
+}
+
+/* ── Responsive scale for smaller screens ────────────── */
+@media (max-height: 700px), (max-width: 760px) {
+  #crt-wrapper {
+    transform: scale(0.75);
+    transform-origin: center top;
+  }
+  body {
+    justify-content: flex-start;
+    padding-top: 10px;
+  }
+}

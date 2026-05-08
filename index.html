@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>THE PROJECT &copy;1995 &mdash; Stefan Kriesel &amp; Nico Winkler</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="crt-wrapper">
+    <div id="monitor-frame">
+      <div id="screen-area">
+        <canvas id="canvas" width="640" height="510"></canvas>
+        <div id="scanlines"></div>
+        <div id="vignette"></div>
+      </div>
+      <div id="monitor-chin">
+        <div id="power-led"></div>
+        <span id="monitor-brand">STEFAN&middot;CORP &nbsp; M-1995</span>
+        <div id="monitor-buttons">
+          <div class="mon-btn"></div>
+          <div class="mon-btn"></div>
+          <div class="mon-btn active"></div>
+        </div>
+      </div>
+    </div>
+    <div id="monitor-neck"></div>
+    <div id="monitor-base"></div>
+  </div>
+
+  <div id="hint-bar">
+    <span id="hint-text"></span>
+    <button id="mute-btn" title="Sound Ein/Aus">&#128266;</button>
+  </div>
+
+  <script src="js/ega.js"></script>
+  <script src="js/audio.js"></script>
+  <script src="js/scenes/intro.js"></script>
+  <script src="js/scenes/menu.js"></script>
+  <script src="js/scenes/kreissinus.js"></script>
+  <script src="js/scenes/solar.js"></script>
+  <script src="js/scenes/oszi.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
