@@ -114,9 +114,8 @@ const MenuScene = {
   },
 
   _drawCursor(ctx) {
-    // Blinkender Cursor-Balken neben dem Eingabefeld
+    // Blinkender Cursor-Block innerhalb des ?-?-?-?-? Kastens (x≈180-285, y≈130-182)
     ctx.fillStyle = this._blinkOn ? ega(14) : ega(4);
-    ctx.fillRect(48, 370, 10, 20);
-    if (this._blinkOn) App.text(48, 370, '►', 14, 20);
+    ctx.fillRect(195, 148, 10, 16);
   },
 };
