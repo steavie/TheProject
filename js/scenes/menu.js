@@ -116,6 +116,6 @@ const MenuScene = {
   _drawCursor(ctx) {
     // Blinkender Cursor-Block innerhalb des ?-?-?-?-? Kastens (x≈180-285, y≈130-182)
     ctx.fillStyle = this._blinkOn ? ega(14) : ega(4);
-    ctx.fillRect(195, 148, 10, 16);
+    ctx.fillRect(170, 155, 10, 16);
   },
 };
