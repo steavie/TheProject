@@ -104,7 +104,7 @@ const IntroScene = {
       }
 
       if (!this._skipToAuthors) {
-        const s4 = 'WOS WRITTEN BY...';
+        const s4 = 'WAS WRITTEN BY...';
         await type(s4, cx(s4, 26), 280, 10, 26);
         await pause(1200);
       }
