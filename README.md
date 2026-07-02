@@ -10,6 +10,17 @@ Das Ergebnis: vier Programme in einem, präsentiert mit einem kleinen Intro und 
 
 ### Die Programme
 
+```mermaid
+flowchart TD
+    A[Intro] --> B[Hauptmenü]
+    B -->|K| C[Kreissinus]
+    B -->|O| D[Oszilloskop]
+    B -->|U| E[Sonnensystem]
+    C -->|Q| B
+    D -->|Q| B
+    E -->|Q| B
+```
+
 | Taste | Programm | Beschreibung |
 |-------|----------|--------------|
 | **K** | Kreissinus | Visualisiert Sinus- und Kosinuswellen, animiert mit einem rotierenden Punkt auf einem Kreis |
