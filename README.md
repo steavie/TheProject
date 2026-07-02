@@ -41,3 +41,14 @@ Nachdem wir das Projekt fertig abgegeben hatten, durften wir den Rest des Schulj
 Diese Website ist eine originalgetreue Nachbildung im Browser — Canvas statt BGI, Web Audio API statt PC-Speaker, aber dieselbe Logik, dieselben Farben und dasselbe Feeling wie 1995.
 
 **Stefan Kriesel & Nico Winkler — (c) 1995 Informatik-Projekt**
+
+
+## Fuer Marcus
+
+```mermaid
+flowchart LR
+    A[Hallo] --> B[Stefan]
+    B --> C[Siehst]
+    B -->|du| D[das?]
+    style D stroke-dasharray: 5 5
+```
